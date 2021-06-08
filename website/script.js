@@ -1,7 +1,7 @@
-const canvas = document.getElementById('canvas_home_torus');
+const canvas = document.getElementById('graphics_torus');
 const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth / 2;
-canvas.height = window.innerHeight / 4;
+canvas.width = 256; // window.innerWidth / 2;
+canvas.height = 128; // window.innerHeight / 4;
 
 let size = 20;
 let posX = canvas.width / 2;
@@ -11,7 +11,7 @@ let angle = 0;
 function drawFlower() {
     ctx.fillStyle = 'red';
     ctx.strokeStyle = 'green';
-    ctx.lineWidth = 5;
+    ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.arc(posX, posY, size, 0, Math.PI * 2);
     ctx.closePath();
@@ -24,8 +24,8 @@ function animate() {
 
     drawFlower();
 
-    posX += 10 * Math.cos(angle);
-    posY += 3 * Math.sin(angle);
+    posX += 8 * Math.cos(angle);
+    posY += 2 * Math.sin(angle);
     angle += 0.1;
     requestAnimationFrame(animate);
 }
