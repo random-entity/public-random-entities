@@ -1,19 +1,79 @@
 <!DOCTYPE html>
 <html>
 
+<style>
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted rgb(128, 128, 128);
+    }
+
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 240px;
+        background-color: rgb(128, 128, 128);
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        top: -5px;
+        left: 110%;
+    }
+
+    .tooltip .tooltiptext::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 100%;
+        margin-top: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: transparent rgb(128, 128, 128) transparent transparent;
+    }
+
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+    }
+</style>
+
 <head>
     <meta charset="utf-8">
-    <title>random entities</title>
+    <title>public random entities</title>
 </head>
 
-<body>
+<body style="text-align:center;">
     <div id="introduction">
-        <h1>random entities</h1>
-        <h6>by random entity</h6>
-        <a href="https://random-entity.github.io/public-random-entities/">github pages</a>
+        <h1>public random entities</h1>
+        <h5>by random entity</h5>
     </div>
 
-    <canvas id="graphics_torus"></canvas>
+    <div>
+        <canvas id="graphics_torus"></canvas>
+        <p>진동운동이 멈추면 이 모양은 대칭적이지 않게 될 것이다.</p>
+    </div>
+
+    <div>
+        <h3>2021 졸업전시 작품</h3>
+        <p>
+            <a href="out/종교화6/document.html">
+                <div class="tooltip">종교화#6
+                    <span class="tooltiptext">모션그래픽디자인프로젝트</span>
+                </div>
+            </a>
+        </p>
+        <p>
+            <a href="out/인간의 숲/document.html">
+                <div class="tooltip">인간의 숲
+                    <span class="tooltiptext">미디어디자인프로젝트</span>
+                </div>
+            </a>
+
+        </p>
+    </div>
+
+    <h6><a href="https://random-entity.github.io/public-random-entities/">github pages</a></h6>
 
     <script src="website/home.js"></script>
 </body>
