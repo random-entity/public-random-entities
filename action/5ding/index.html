@@ -15,6 +15,11 @@
         gtag('config', 'G-9FLFEZ3QMW');
     </script>
 
+    <!-- For p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"
+        integrity="sha512-gQVBYBvfC+uyor5Teonjr9nmY1bN+DlOCezkhzg4ShpC5q81ogvFsr5IV4xXAj6HEtG7M1Pb2JCha97tVFItYQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <style>
         body {
             margin-top: 20px;
@@ -129,6 +134,7 @@
         .grid {
             display: grid;
             grid-template-columns: auto 1fr;
+            grid-template-rows: auto;
         }
 
         .grid_ul {
@@ -139,7 +145,7 @@
             padding-left: 33px;
         }
 
-        #grid_article {
+        #grid_right {
             border: pink 10px solid;
 
         }
@@ -150,6 +156,10 @@
         }
 
         .grid_article_content {
+            display: none;
+        }
+
+        #p5_no-display {
             display: none;
         }
 
@@ -176,7 +186,7 @@
             width: 100px;
             position: absolute;
             display: none;
-            transition-duration: 0.5s;
+            /* transition-duration: 0.1s; */
             transition-timing-function: ease-out;
             pointer-events: none;
         }
@@ -228,42 +238,74 @@
         <ul class="grid_ul">
             <li class="grid_li" onclick="
                 grid_article.innerHTML = document.getElementById('학생후기1').innerHTML
+                hideAllP5();
             ">
                 학생 후기 1
             </li>
 
             <li class="grid_li" onclick="
                 grid_article.innerHTML = document.getElementById('학생후기2').innerHTML
+                hideAllP5();
             ">
                 학생 후기 2
             </li>
 
             <li class="grid_li" onclick="
                 grid_article.innerHTML = document.getElementById('바나나후기').innerHTML
+                hideAllP5();
             ">
                 <span class="tooltip">바*나 학생 후기<span class="tooltiptext">(수업 퀄리티에 대한 애니메이션 작업)</span></span>
             </li>
 
             <li class="grid_li" onclick="
                 grid_article.innerHTML = document.getElementById('김아라후기').innerHTML
+                hideAllP5();
             ">
                 <span class="tooltip">김*라 학생 후기<span class="tooltiptext">(수업 감상에 대한 퍼포먼스 작업)</span></span>
             </li>
 
             <li class="grid_li" onclick="
                 grid_article.innerHTML = document.getElementById('원장님후기').innerHTML
-                ">
+                hideAllP5();
+            ">
                 <span class="tooltip">원*님 학생 후기<span class="tooltiptext">(충격! 심경고백)</span></span>
             </li>
 
             <li class="grid_li" onclick="
                 grid_article.innerHTML = document.getElementById('착하게').innerHTML
+                hideAllP5();
             ">
                 코딩을 깨우친 후 착하게 사는 방법
             </li>
+
+            <li class="grid_li" onclick="
+                grid_article.innerHTML = '';
+                showOnlyP5ById('p5_canvas-non_ortho');
+            ">
+                p5.js 예시 1
+            </li>
+
+            <li class="grid_li" onclick="
+                grid_article.innerHTML = '';
+                showOnlyP5ById('p5_canvas-wavemaker');
+            ">
+                p5.js 예시 2
+            </li>
+
+            <li class="grid_li" onclick="
+                grid_article.innerHTML = '';
+                showOnlyP5ById('p5_canvas-kaleidoscope');
+            ">
+                p5.js 예시 3
+            </li>
         </ul>
-        <div id="grid_article"></div>
+
+        <div id="grid_right">
+            <div id="grid_article"></div>
+            <div id="grid_p5" style="visibility: hidden;"></div>
+        </div>
     </div>
+    <div class="p5_canvas" id="p5_canvas-kaleidoscope"></div>
 
     <div id="disqus_thread"></div>
     <script>
@@ -416,7 +458,6 @@
         </div>
 
         <div class="grid_article_content" id="착하게">
-
             <h2>착하게 사는 방법.</h2>
             <p>
                 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게
@@ -466,19 +507,6 @@
         </div>
     </div>
 
-    <img id="cursor" src="img/gifs/heart-pop.gif">
-
-
-    <script>
-        var cursor = document.getElementById("cursor");
-
-        document.onmousemove = function (e) {
-            cursor.style.left = (e.pageX - 50) + "px";
-            cursor.style.top = (e.pageY - 50) + "px";
-            cursor.style.display = "block";
-        }
-    </script>
-
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
         var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
@@ -492,6 +520,263 @@
         })();
     </script>
     <!--End of Tawk.to Script-->
+
+    <!-- Cursor shit -->
+    <img id="cursor" src="img/gifs/heart-pop.gif">
+    <script>
+        var cursor = document.getElementById("cursor");
+
+        document.onmousemove = function (e) {
+            cursor.style.left = (e.pageX - 50) + "px";
+            cursor.style.top = (e.pageY - 50) + "px";
+            cursor.style.display = "block";
+        }
+    </script>
+
+    <!-- p5.js sketches -->
+    <script>
+        var sketch_non_ortho = function (p) {
+            //Position of left hand side of floor
+            let base1;
+
+            //Position of right hand side of floor
+            let base2;
+            //Length of floor
+            //let baseLength;
+
+            // Variables related to moving ball
+            let position;
+            let velocity;
+            let r = 6;
+            let speed = 6;
+
+            p.setup = function () {
+                let canvas = p.createCanvas(710, 400);
+                canvas.id('p5_canvas-non_ortho');
+                canvas.class('p5_canvas');
+
+                p.fill(128);
+                base1 = p.createVector(0, p.height - 150);
+                base2 = p.createVector(p.width, p.height);
+                //createGround();
+
+                //start ellipse at middle top of screen
+                position = p.createVector(p.width / 2, 0);
+
+                //calculate initial random velocity
+                velocity = p5.Vector.random2D();
+                velocity.mult(speed);
+            };
+
+            p.draw = function () { //draw background
+                p.fill(0, 12);
+                p.noStroke();
+                p.rect(0, 0, p.width, p.height);
+
+                //draw base
+                p.fill(200);
+                p.quad(base1.x, base1.y, base2.x, base2.y, base2.x, p.height, 0, p.height);
+
+                //calculate base top normal
+                let baseDelta = p5.Vector.sub(base2, base1);
+                baseDelta.normalize();
+                let normal = p.createVector(-baseDelta.y, baseDelta.x);
+                let intercept = p5.Vector.dot(base1, normal);
+
+                //draw ellipse
+                p.noStroke();
+                p.fill(255);
+                p.ellipse(position.x, position.y, r * 2, r * 2);
+
+                //move ellipse
+                position.add(velocity);
+
+                //normalized incidence vector
+                incidence = p5.Vector.mult(velocity, -1);
+                incidence.normalize();
+
+                // detect and handle collision with base
+                if (p5.Vector.dot(normal, position) > intercept) {
+                    //calculate dot product of incident vector and base top
+                    let dot = incidence.dot(normal);
+
+                    //calculate reflection vector
+                    //assign reflection vector to direction vector
+                    velocity.set(
+                        2 * normal.x * dot - incidence.x,
+                        2 * normal.y * dot - incidence.y,
+                        0
+                    );
+                    velocity.mult(speed);
+
+                    // draw base top normal at collision point
+                    p.stroke(255, 128, 0);
+                    p.line(
+                        position.x,
+                        position.y,
+                        position.x - normal.x * 100,
+                        position.y - normal.y * 100
+                    );
+                }
+                //}
+
+                // detect boundary collision
+                // right
+                if (position.x > p.width - r) {
+                    position.x = p.width - r;
+                    velocity.x *= -1;
+                }
+                // left
+                if (position.x < r) {
+                    position.x = r;
+                    velocity.x *= -1;
+                }
+                // top
+                if (position.y < r) {
+                    position.y = r;
+                    velocity.y *= -1;
+
+                    //randomize base top
+                    base1.y = p.random(p.height - 100, p.height);
+                    base2.y = p.random(p.height - 100, p.height);
+                }
+            };
+        };
+        new p5(sketch_non_ortho, window.document.getElementById('grid_p5'));
+
+        var sketch_wavemaker = function (p) {
+            let t = 0; // time variable
+
+            p.setup = function () {
+                let canvas = p.createCanvas(600, 600);
+                canvas.id('p5_canvas-wavemaker');
+                canvas.class('p5_canvas');
+                p.noStroke();
+                p.fill(40, 200, 40);
+            }
+
+            p.draw = function () {
+                p.background(10, 10); // translucent background (creates trails)
+
+                // make a x and y grid of ellipses
+                for (let x = 0; x <= p.width; x = x + 30) {
+                    for (let y = 0; y <= p.height; y = y + 30) {
+                        // starting point of each circle depends on mouse position
+                        const xAngle = p.map(p.mouseX, 0, p.width, -4 * p.PI, 4 * p.PI, true);
+                        const yAngle = p.map(p.mouseY, 0, p.height, -4 * p.PI, 4 * p.PI, true);
+                        // and also varies based on the particle's location
+                        const angle = xAngle * (x / p.width) + yAngle * (y / p.height);
+
+                        // each particle moves in a circle
+                        const myX = x + 20 * p.cos(2 * p.PI * t + angle);
+                        const myY = y + 20 * p.sin(2 * p.PI * t + angle);
+
+                        p.ellipse(myX, myY, 10); // draw particle
+                    }
+                }
+
+                t = t + 0.01; // update time
+            }
+        }
+        new p5(sketch_wavemaker, window.document.getElementById('grid_p5'));
+
+        var sketch_kaleidoscope = function (p) {
+            // Symmetry corresponding to the number of reflections. Change the number for different number of reflections 
+            let symmetry = 6;
+
+            let angle = 360 / symmetry;
+            let saveButton, clearButton, mouseButton, keyboardButton;
+            let slider;
+
+            p.setup = function () {
+                let canvas = p.createCanvas(710, 710);
+                // canvas.id('p5_canvas-kaleidoscope');
+                // canvas.class('p5_canvas');
+                // 버튼들도 감싸는 div에 id와 class 줘야 함.
+
+                p.angleMode(p.DEGREES);
+                p.background(255);
+
+                // Creating the save button for the file
+                saveButton = p.createButton('save');
+                saveButton.mousePressed(saveFile);
+
+                // Creating the clear screen button
+                clearButton = p.createButton('clear');
+                clearButton.mousePressed(clearScreen);
+
+                // Creating the button for Full Screen
+                fullscreenButton = p.createButton('Full Screen');
+                fullscreenButton.mousePressed(screenFull);
+
+                // Setting up the slider for the thickness of the brush
+                brushSizeSlider = p.createButton('Brush Size Slider');
+                sizeSlider = p.createSlider(1, 32, 4, 0.1);
+            }
+
+            // Save File Function
+            function saveFile() {
+                p.save('sketch_kaleidoscope.jpg');
+            }
+
+            // Clear Screen function
+            function clearScreen() {
+                p.background(255);
+            }
+
+            // Full Screen Function
+            function screenFull() {
+                let fs = p.fullscreen();
+                p.fullscreen(!fs);
+            }
+
+            p.draw = function () {
+                p.translate(p.width / 2, p.height / 2);
+
+                if (p.mouseX > 0 && p.mouseX < p.width && p.mouseY > 0 && p.mouseY < p.height) {
+                    let mx = p.mouseX - p.width / 2;
+                    let my = p.mouseY - p.height / 2;
+                    let pmx = p.pmouseX - p.width / 2;
+                    let pmy = p.pmouseY - p.height / 2;
+
+                    if (p.mouseIsPressed) {
+                        for (let i = 0; i < symmetry; i++) {
+                            p.rotate(angle);
+                            let sw = sizeSlider.value();
+                            p.strokeWeight(sw);
+                            p.line(mx, my, pmx, pmy);
+                            p.push();
+                            p.scale(1, -1);
+                            p.line(mx, my, pmx, pmy);
+                            p.pop();
+                        }
+                    }
+                }
+            }
+
+        }
+        new p5(sketch_kaleidoscope, window.document.getElementById('p5_canvas-kaleidoscope'));
+        document.getElementById('grid_p5').appendChild(document.getElementById('p5_canvas-kaleidoscope'));
+
+        let p5_list = document.getElementsByClassName('p5_canvas');
+        let showOnlyP5ById = (id) => {
+            document.getElementById('grid_p5').style.visibility = 'visible';
+
+            p5_list.forEach(element => {
+                if (element.id == id) {
+                    element.style.display = 'initial';
+                } else {
+                    element.style.display = 'none';
+                }
+            });
+        }
+
+        var hideAllP5 = () => {
+            p5_list.forEach(element => {
+                element.style.display = 'none';
+            });
+        }
+    </script>
 </body>
 
 </html>
