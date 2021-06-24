@@ -18,6 +18,7 @@
 
         .mainBanner {
             min-width: 940px;
+            z-index: 2;
         }
 
         #shadowBox {
@@ -148,6 +149,26 @@
         .dialog_teacher {
             color: seagreen;
         }
+
+        #evolution {
+            visibility: hidden;
+            height: 0;
+        }
+
+        .mainBanner:hover+#evolution {
+            visibility: visible;
+            height: 300px;
+        }
+
+        #cursor {
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            display: none;
+            transition-duration: 0.5s;
+            transition-timing-function: ease-out;
+            pointer-events: none;
+        }
     </style>
 </head>
 
@@ -164,6 +185,10 @@
             <iframe src="https://giphy.com/embed/SwsgFqsjlFzESG2gUh" width="120" height="120" frameBorder="0"
                 class="giphy-embed" allowFullScreen></iframe>
         </span>
+    </div>
+
+    <div class="headerBox" id="evolution">
+        <img src="img/evolution.png">
     </div>
 
     <div style="background-color: greenyellow; border: 20px pink solid; margin-bottom: 20px;">
@@ -229,38 +254,61 @@
         <div id="grid_article"></div>
     </div>
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <a href="../../index.html">public random entities</a>
+    <div id="disqus_thread"></div>
+    <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+        /*
+        var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function () { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://5ding.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
 
-    <div>
+    <div class="public-random-entities">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <a href="../../index.html">public random entities</a>
+    </div>
+
+    <div class="grid_article_content_parent">
         <div class="grid_article_content" id="학생후기1">
             <p><strong class="dialog_student">학생</strong>: 코딩이 뭐야?</p>
             <p><strong class="dialog_teacher">선생</strong>: 나도 몰라~~ 우하하~~! 즐겁게 살면 되는 거지~~!</p>
@@ -369,42 +417,56 @@
                 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게
                 살게요.
                 착하게
-                살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요.
+                살게요. 착하게 살게요. 착하게 살게요. 착하게 살계요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요.
                 착하게
                 살게요.
                 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게
                 살게요.
                 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요.
                 착하게
-                살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요.
+                살게오. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요.
                 착하게
                 살게요.
-                착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게
+                착하게 살게요. 착하게 살게요.. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게
                 살게요.
                 착하게
-                살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요.
+                살게요. 착하게 살게요. 착하게 살게요... 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게
+                살게요.
                 착하게
                 살게요.
-                착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게
+                착하게 살게요. 착하게 살게요. 착하게 살게요... 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게
                 살게요.
                 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요.
                 착하게
-                살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요.
+                살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요.. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요.
                 착하게
                 살게요.
                 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게
                 살게요.
                 착하게
-                살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요.
+                살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요.. 착하게. 살게요. 착하게 살게요. 챡하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게
+                살게요.
                 착하게
                 살게요.
-                착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 라고 매일 아침 108회
+                착햐게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 착하게 살게요. 라고 매일 아침 108회
                 씩
-                말한다. 이 글에 '착하게 살게요'가 몇 번 쓰였는지 코딩을 통해 알아낸다.
+                말한다. 이 글에 '착하게 살게요'가 몇 번 쓰였는지 찾기 기능을 사용하지 않고 코딩을 통해 알아낸다.
             </p>
         </div>
     </div>
 
+    <img id="cursor" src="img/gifs/heart-pop.gif">
+
+
+    <script>
+        var cursor = document.getElementById("cursor");
+
+        document.onmousemove = function (e) {
+            cursor.style.left = (e.pageX - 50) + "px";
+            cursor.style.top = (e.pageY - 50) + "px";
+            cursor.style.display = "block";
+        }
+    </script>
 </body>
 
 </html>
