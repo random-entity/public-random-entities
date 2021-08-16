@@ -7,7 +7,7 @@ tocHeader.innerText = "목차";
 toc.appendChild(tocHeader);
 
 // Create a list for the ToC entries
-tocList = document.createElement("ul");
+tocList = document.createElement("ol");
 
 // Get the h3 tags - ToC entries
 headers = document.getElementsByTagName("h1");
