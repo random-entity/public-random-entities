@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="scripts/minimal.css">
     <link rel="stylesheet" href="scripts/toc.css">
     <link rel="stylesheet" href="scripts/top.css">
+    <link rel="stylesheet" href="scripts/hideStrikesBtn.css">
 </head>
 
 <body>
@@ -15,7 +16,8 @@
     <h4>published by random-entity</h4>
 
     <div id="ToC"></div>
-    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <button onclick="topFunction()" id="topBtn" title="Go to top">top</button>
+    <button onclick="hideStrikes()" id="hideStrikesBtn" title="Hide strikes">simple</button>
 
     <ol id="main">
         <li>
@@ -27,14 +29,18 @@
                         <li>random-entity가 2021년에 만들고자 하는 단편영화입니다.</li>
                         <li>일정 내에 완성된다면 2021년 12월 디자인과 졸업전시 작품으로 전시될 것입니다.</li>
                         <li>시간이 부족하면 [강가에서 I] 파트만 완성해서 전시할 것입니다. 나머지는 그 뒤에 완성해도 됩니다.</li>
-                        <li>일손이 부족하여 스태프(연기, 스토리보드, 미술, 촬영, 녹음, CG/VFX, ...)를 상시 모집합니다. 이 글을 보시는 분이 별로 없겠지만 지원은
-                            <a target="_blank" href="https://open.kakao.com/o/spVtKAvd">오픈카톡</a>으로 해주시면
-                            감사하겠습니다.
+                    </ul>
+                </li>
+                <li>
+                    <h2>스태프 모집</h2>
+                    <ul>
+                        <li>일손이 부족하여 스태프(연기, 스토리보드, 미술, 촬영, 녹음, CG/VFX, ...)를 상시 모집합니다.</li>
+                        <li>지원은 <a target="_blank" href="https://open.kakao.com/o/spVtKAvd">오픈카톡</a>으로 해주시면 감사하겠습니다.
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <h2>스태프 간 파일 공유 및 회의</h2>
+                    <h2>스태프 간 파일 공유 및 소통</h2>
                     <ul>
                         <li><a target="_blank"
                                 href="https://drive.google.com/drive/folders/1pSaQ9ypxLCNi5shDC0hqX8J9FvvQeqLn?usp=sharing">구글
@@ -48,8 +54,9 @@
                             : 한가할 때 화상
                             회의</li>
                         <br>
-                        <li><a target="_blank" href="https://open.kakao.com/o/spVtKAvd">오픈카톡</a> : 신규 스태프 지원</li>
-                        <li><a target="_blank" href="https://random-entity.github.io/public-random-entities/out/ixda/document.html">GH Pages (여기)</a> : 일반에게 공개된 웹문서</li>
+                        <li><a target="_blank"
+                                href="https://random-entity.github.io/public-random-entities/out/ixda/document.html">GH
+                                Pages (여기)</a> : 일반에게 공개된 웹문서</li>
                     </ul>
                 </li>
                 <li>
@@ -202,12 +209,15 @@
                             <ul>
                                 <li>A = 남1
                                     <ul>
-                                        <li><s>현재 자연+먹방 유튜버</s>
-                                            <ul>
-                                                <li><s>아름다운 풍경의 자연을 찾아가 자연의 신에게 고사를 지내고 고사상 차림을 맛있게 먹는 콘텐츠 제작.</s></li>
-                                            </ul>
-                                        </li>
-                                        <li>그냥 말 없는 걸로 결정.</li>
+                                        <s>
+                                            <li>현재 자연+먹방 유튜버
+                                                <ul>
+                                                    <li>아름다운 풍경의 자연을 찾아가 자연의 신에게 고사를 지내고 고사상 차림을 맛있게 먹는 콘텐츠 제작.</li>
+                                                </ul>
+                                            </li>
+                                            <li>그냥 말 없는 걸로 결정.</li>
+                                        </s>
+                                        <li>밤의 산길을 운전하는 사람</li>
                                     </ul>
                                 </li>
                                 <li>B = 남2
@@ -241,15 +251,14 @@
                                 <li><img style="width: 25%;" src="./references/descriptions/길리슈트.png"></li>
                             </ul>
                         </li>
-                        <li>
-                            <s>
+                        <s>
+                            <li>
                                 신비한 새 [폐기] (회색 구로 대체.)
                                 <ul>
                                     <li>CG? 분장? 길리슈트 사막형(다른 요괴)로 대체? (미정, 기술검증 결과에 따라 변경)</li>
                                 </ul>
-                            </s>
-
-                        </li>
+                            </li>
+                        </s>
                     </ul>
                 </li>
                 <li>
@@ -299,7 +308,7 @@
                                                 <li>X는 물 중간에 있는 신비한 새를 발견하여 그쪽으로 다가간다.</li>
                                                 <li>그러다가 ACD 무리와 마주친다.</li>
                                                 <li>ACD는 X에게 돌을 던진다.</li>
-                                                <li>(화면에만 갑자기 나타난)B가 큰 바위를 들고 아주 강하게 던진다.(180도 법칙 깸)</li>
+                                                <li>(화면에만 갑자기 나타난)B가 큰 바위를 들고 아주 강하게 던진다.(180도 법칙 무시)</li>
                                                 <li>다른 돌들에 맞아 휘청거리던 X를 바위는 빗겨간다.</li>
                                             </ul>
                                         </li>
@@ -387,7 +396,7 @@
                                         <li>X는 화면을 A에게 넘겨주고 화면에 정신이 팔려 있는 A를 두고 CD와 함께 다시 산행을 계속한다.</li>
                                         <li>D는 체력적 부담을 느껴 더이상 못 올라가겠다고 한다.</li>
                                         <li>X와 C는 D를 두고 정상을 향해 산행을 계속한다.</li>
-                                        <li>(인서트) 오블리크 앵글로 찍어 언덕 오르는 것처럼 보이는 공사판 이미지들</li>
+                                        <li>(인서트) 오블리크 앵글로 찍어 언덕 오르는 것처럼 보이는 공사판 이미지들 + 마지막엔 지어지고 있는 집 이미지</li>
                                         <li>X와 C는 끝내 정상에 오른다.</li>
                                         <li>X는 보여주고 싶은 것이 있다며 절벽 아래로 스스로의 몸을 던진다.</li>
                                         <li>(인서트) 지구가 구에서 토러스로 변형되며 X는 토러스를 감는 나선형 궤적을 그린다.(locally: 튜브, globally: 토러스)
@@ -641,9 +650,8 @@
                             <h3>결과</h3>
                             <ul>
                                 <li><strong>강가에서 I, II: 강원도 영월군 김삿갓면에서 찾은 장소로 결정.</strong></li>
-                                <li>동네 공사판 이미지는 봉천동 일대에서 확보.</li>
-                                <li>짓고 있는 집 이미지 가평에서 확보.</li>
-                                <li>거대 공사판 아이디어는 어떻게? 뺄까? -- 드론 필요.</li>
+                                <li>동네 공사판 이미지는 봉천동 일대에서 확보, 짓고 있는 집 이미지 가평에서 확보.</li>
+                                <s><li>거대 공사판 아이디어는 어떻게? 뺄까? -- 드론 필요.</li></s>
                             </ul>
                         </li>
                     </ul>
@@ -699,8 +707,8 @@
                         <li>
                             <h3>요괴</h3>
                             <ul>
-                                <li>2021/06/03 수업에서 정다윤님으로부터 배틀그라운드의 길리슈트를 참고해보라는 의견을 들었다. 찾아보니 참 괜찮다.</li>
-                                <li>2021/08/10 길리슈트 정글형 구매 완료 29900 원</li>
+                                <li>[2021/06/03] 수업에서 정다윤님으로부터 배틀그라운드의 길리슈트를 참고해보라는 의견을 들었다. 찾아보니 참 괜찮다.</li>
+                                <li>[2021/08/10] 길리슈트 정글형 구매 완료 29900 원</li>
                                 <li>길리슈트: 털이 온 표면에 빽빽하게 붙어 있지는 않아 개구리 군복 무늬가 보일 수도 있겠다. 그러나 어쩔 수 없다.</li>
                                 <li>길리슈트 = 29900 원</li>
                                 <li>길리슈트 방수 스프레이 x 2 = 17800 원</li>
@@ -709,15 +717,24 @@
                         <li>
                             <h3>바위</h3>
                             <ul>
-                                <li><a target="_blank" href="youtube.com/watch?v=TzLFSZONfSk">바위 쿠션</a></li>
-                                <li><a target="_blank"
-                                        href="https://www.coupang.com/vp/products/295620847?itemId=932183505&vendorItemId=5311150571&q=%EB%8F%8C+%EC%BF%A0%EC%85%98&itemsCount=36&searchId=5161f7000c6f45b88d1f2ca659f720e2&rank=16&isAddedCart=">쿠팡
-                                        -- 근데 해외배송으로 09/15 도착</a> -- 11번가에서 2가지 주문.</li>
-                                <li>천에 인쇄 맡겨서 만들 수 없나? <a target="_blank"
-                                        href="http://laprint.co.kr/goods/goods_view.php?goodsNo=1000000020">1</a> <a
-                                        target="_blank"
-                                        href="https://www.eprinting.co.kr/board/board_list.php?board_name=equipment">2</a>
-                                </li>
+                                <s>
+                                    <li>[2021/08/20] 김준영 님의 <a target="_blank" href="youtube.com/watch?v=TzLFSZONfSk">바위
+                                            던지기 몰카 유튜브
+                                            영상</a>에서 시작된 아이디어.</li>
+                                    <li><a target="_blank"
+                                            href="https://www.coupang.com/vp/products/295620847?itemId=932183505&vendorItemId=5311150571&q=%EB%8F%8C+%EC%BF%A0%EC%85%98&itemsCount=36&searchId=5161f7000c6f45b88d1f2ca659f720e2&rank=16&isAddedCart=">
+                                            2021/08/21 영상에서와 같은 바위 쿠션을 사려고 했으나 해외배송으로 늦게 도착할 위험.</a> 11번가에서 2가지 주문.</li>
+                                    <li>천에 돌 표면 사진 인쇄 맡겨서 바느질 해서 만들 수 없을까? <a target="_blank"
+                                            href="http://laprint.co.kr/goods/goods_view.php?goodsNo=1000000020">1</a> <a
+                                            target="_blank"
+                                            href="https://www.eprinting.co.kr/board/board_list.php?board_name=equipment">2</a>
+                                    </li>
+                                    <li>그러다가</li>
+                                </s>
+                                <li>[2021/08/22] 이호정 님의 <a target='_blank'
+                                        href="https://www.youtube.com/watch?v=KvEX1sZPEdk">스톤
+                                        스프레이를 아이소 덩어리 깎은 것에 도색해 가짜 바위를 만든다</a>는 아이디어가 이어지고,</li>
+                                <li>열린방을 통해 조소과 분들에게 수소문 한 결과 재료만 (을지로에서?) 구하면 쉽게 가능할 것, 원하는 물성도 나올 것이라는 전망.</li>
                             </ul>
                         </li>
                         <li>
@@ -957,6 +974,7 @@
 
     <script src="scripts/toc.js"></script>
     <script src="scripts/top.js"></script>
+    <script src="scripts/hideStrikes.js"></script>
 </body>
 
 </html>
